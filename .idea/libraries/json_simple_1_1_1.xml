@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="json-simple-1.1.1">
+    <CLASSES>
+      <root url="jar:///home/maroc/Downloads/Compressed/json-simple-1.1.1.jar!/" />
+      <root url="jar:///home/maroc/Downloads/Compressed/jar_files.zip!/" />
+      <root url="jar:///home/maroc/Downloads/Compressed/jackson-annotations-2.10.0.pr3.jar!/" />
+      <root url="jar:///home/maroc/Downloads/Compressed/jackson-core-2.10.0.pr3.jar!/" />
+      <root url="jar:///home/maroc/Downloads/Compressed/jackson-databind-2.10.0.pr3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="jar:///home/maroc/Downloads/Compressed/jar_files.zip!/" recursive="false" />
+  </library>
+</component>
