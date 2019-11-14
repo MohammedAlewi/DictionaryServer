@@ -15,9 +15,10 @@ public class DictionaryApp {
     private JTextField origin_field;
     private JTextField first_used_field;
     private JTextArea meaning_field;
-    private JButton saveButton;
+    private JButton updateButton;
     private JButton deleteButton;
     private JButton clearButton;
+    private JButton addButton;
 
     //CODE :: Objects
     private ClientManager clientManager;
@@ -38,6 +39,7 @@ public class DictionaryApp {
                     first_used_field.setText(word.getfirst_used());
                     for(String meanings :word.getMeanings()){
                         meaning_field.append(meanings);
+                        meaning_field.append("\n");
                     }
                 }
             }

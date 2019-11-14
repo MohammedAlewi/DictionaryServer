@@ -55,6 +55,7 @@ public class ClientManager {
     }
 
     public boolean addWord(Word word){
+        if(this.getWord(word.getWord())!=null) return false;
         boolean answer=false;
         try {
             Message message=new Message(Commads.ADD,word);
@@ -123,7 +124,9 @@ public class ClientManager {
         return meanings;
     }
 
-
+    public boolean isConnected(){
+        return this.connected;
+    }
 
     public void exit(){
         try {

@@ -37,4 +37,10 @@ public class DictionaryServer {
     }
 
 
+    public static void main(String[] arg) {
+        DictionaryServer server= new DictionaryServer(7789);
+        server.initialize_server();
+        server.start_server();
+    }
+
 }
