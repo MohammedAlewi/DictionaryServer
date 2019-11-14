@@ -6,6 +6,8 @@ import app.code.Word;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class DictionaryApp {
     private JPanel MainPannel;
@@ -27,6 +29,7 @@ public class DictionaryApp {
         // creating client manager
         this.clientManager=clientManager;
         JOptionPane.showMessageDialog(null,this.clientManager.initialize_connection());
+        updateButton.setEnabled(false);
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -34,6 +37,8 @@ public class DictionaryApp {
                 if(word==null){
                     JOptionPane.showMessageDialog(null,"Unable to find Your word. :"+search_field.getText().toString());
                 }else{
+                    updateButton.setEnabled(true);
+                    addButton.setEnabled(false);
                     word_field.setText(word.getWord());
                     origin_field.setText(word.getOrigin());
                     first_used_field.setText(word.getfirst_used());
@@ -52,6 +57,14 @@ public class DictionaryApp {
                 origin_field.setText("");
                 first_used_field.setText("");
                 meaning_field.setText("");
+            }
+        });
+        search_field.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                updateButton.setEnabled(false);
+                addButton.setEnabled(true);
             }
         });
     }
