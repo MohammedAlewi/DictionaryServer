@@ -8,6 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="json-simple-1.1.1" level="project" />
-    <orderEntry type="library" name="javafx-0.2-sources.jar" level="project" />
+    <orderEntry type="library" name="jackson-core-2.10.0.pr3" level="project" />
   </component>
 </module>

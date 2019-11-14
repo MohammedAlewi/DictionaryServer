@@ -123,6 +123,8 @@ public class ClientManager {
         return meanings;
     }
 
+
+
     public void exit(){
         try {
             this.outputStream.close();

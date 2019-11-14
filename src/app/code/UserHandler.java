@@ -55,7 +55,7 @@ public class UserHandler extends Thread{
                 outputStream.flush();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage()+" passing it!");
 
         }
     }

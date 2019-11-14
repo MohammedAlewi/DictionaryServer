@@ -25,18 +25,12 @@ class testOne extends Thread{
         try {
             ClientManager mngr= new ClientManager();
             System.out.println(mngr.initialize_connection());
-            LinkedList s= new LinkedList();
-            s.add("asshole");
-            s.add("jerk");
-            Word word=new Word("MPS","2019","here",s);
-            mngr.addWord(word);
-
+            Word word=mngr.getWord("MPS");
             System.out.println(word.getfirst_used());
             System.out.println(word.getMeanings().get(0));
             System.out.println(word.getOrigin());
             System.out.println("------------------------------------");
 
-            word=mngr.getWord("MPS");
             System.out.println(word);
 //            System.out.println(word.getfirst_used());
 //            System.out.println(word.getMeanings().get(0));
