@@ -40,6 +40,10 @@ public class DictionaryApp {
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                if(!clientManager.isConnected()) {
+                    JOptionPane.showMessageDialog(null, "Unable to contact the server  please make sure its running");
+                    return;
+                }
                 Word word=clientManager.getWord(search_field.getText().toString());
                 clearButton.doClick();
                 if(word==null){
@@ -80,6 +84,10 @@ public class DictionaryApp {
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                if(!clientManager.isConnected()) {
+                    JOptionPane.showMessageDialog(null, "Unable to contact the server  please make sure its running");
+                    return;
+                }
                 boolean ans=clientManager.removeWord(word_field.getText().toString());
                 clearButton.doClick();
                 if (ans==true){
@@ -93,6 +101,10 @@ public class DictionaryApp {
         updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                if(!clientManager.isConnected()) {
+                    JOptionPane.showMessageDialog(null, "Unable to contact the server  please make sure its running");
+                    return;
+                }
                 LinkedList meanings=getMeanings();
                 if (!checkFields())
                     return;
@@ -111,6 +123,10 @@ public class DictionaryApp {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                if(!clientManager.isConnected()) {
+                    JOptionPane.showMessageDialog(null, "Unable to contact the server  please make sure its running");
+                    return;
+                }
                 if (!checkFields())
                     return;
                 else if(clientManager.getWord(word_field.getText())!=null){
@@ -174,8 +190,19 @@ public class DictionaryApp {
 
 
     public static void main(String[] arg){
+        ClientManager clientManager=null;
+        if (arg.length>0){
+            try{
+                clientManager=new ClientManager(Integer.parseInt(arg[1]),arg[0]);
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(null," Please fill a valid address. ");
+                return;
+            }
+        }else{
+            clientManager=new ClientManager();
+        }
         JFrame frame=new JFrame("Dictionary");
-        DictionaryApp dictionaryApp=new DictionaryApp(new ClientManager());
+        DictionaryApp dictionaryApp=new DictionaryApp(clientManager);
 
         frame.setContentPane(dictionaryApp.MainPannel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
