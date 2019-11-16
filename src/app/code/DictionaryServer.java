@@ -25,10 +25,11 @@ public class DictionaryServer {
 
     public void start_server(){
         this.ioManager.populateDictionary();
+        System.out.println("----server started-----");
         while(true){
             try {
-                System.out.println("----server start-----");
                 Socket socket= this.server.accept();
+                System.out.println("new client at "+socket.getInetAddress()+":"+socket.getPort());
                 new UserHandler(socket,this.ioManager).start();
             } catch (IOException e) {
                 System.out.println(e.getMessage());
@@ -38,6 +39,7 @@ public class DictionaryServer {
 
 
     public static void main(String[] arg) {
+
         DictionaryServer server= new DictionaryServer(7789);
         server.initialize_server();
         server.start_server();

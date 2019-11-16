@@ -97,6 +97,7 @@ public class IOManager {
 
     public synchronized List getSuggestion(String key){
         List suggest= new ArrayList<String>();
+        if(key.equals("")) return suggest;
         this.words.keySet().forEach((k)->{ if(k.toString().startsWith(key.toLowerCase())) suggest.add(k);});
         return suggest;
     }
