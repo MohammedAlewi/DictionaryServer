@@ -211,9 +211,10 @@ public class DictionaryApp {
         frame.setLocation(dim.width/5, dim.height/5);
 
         frame.pack();
-        if (dictionaryApp.clientManager.isConnected())
-            frame.setVisible(true);
+        if (!dictionaryApp.clientManager.isConnected())
+            return;
 
+        frame.setVisible(true);
         frame.setResizable(false);
     }
 }

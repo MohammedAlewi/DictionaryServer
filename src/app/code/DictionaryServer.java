@@ -29,12 +29,15 @@ public class DictionaryServer {
 
     public void start_server(){
         this.ioManager.populateDictionary();
+        DictionaryThreadPool dictionaryThreadPool= new DictionaryThreadPool(10);
         System.out.println("----server started-----");
         while(true){
             try {
                 Socket socket= this.server.accept();
                 System.out.println("new client at "+socket.getInetAddress()+":"+socket.getPort());
-                new UserHandler(socket,this.ioManager).start();
+                ///UserHandler userHandler=new UserHandler(socket,this.ioManager);
+                ///.start();
+                dictionaryThreadPool.execute(new UserHandler(socket,this.ioManager));
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
